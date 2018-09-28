@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> C Tutorial 2 </title>
+		<link href="sh.css" type="text/css" rel="stylesheet">
+			</head>
+	
+	<body>
+		<h1> C Programming Language Basics </h1>
+		
+		<h2> 3. Program Structure </h2>
+		
+		<p>Your program begins within the <dfn>main function</dfn>.</p>
+		
+		<div class="codediv">
+			<pre><code>int main()
+{
+    printf("Hello, world!\n");
+    return 0;
+}</code></pre>
+		</div>
+		
+		
+		<p> <code>main</code> is a special function, this is where every C program begins. When you run your program, the system calls <code>main</code> in order to execute it. <code>main</code> returns an <code>int</code>. Returning "0" tells the system the program terminated normally.</p>
+		
+		<p> The above program prints the message "Hello, world!" to the screen. Create a text file named "hello.c", open it, and type in the above program.</p>
+		
+		<p> To run the program, you need to <dfn>compile</dfn> it, that is, cover the code into instructions your computer can understand and execute. At the command line, type "gcc hello.c". If all goes well, there should now be a file called "a.out". Any errors are reported at the command line. Fix them and try again. 'a.out' is the exectable for your program. You can double click this program to run it.
+		
+		<p><a href="tut4.html">Next ></a></p>
+	</body>
+</html>

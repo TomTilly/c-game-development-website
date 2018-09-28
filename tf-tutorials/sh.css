@@ -1,0 +1,27 @@
+code
+{
+}
+
+body
+{
+	width: 700px;
+}
+
+.codediv
+{
+	color: white;
+	border-radius: 8px;
+	padding: 8px;
+	background-color: black;
+}
+
+.codediv code
+{
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+.codediv .newcode
+{
+	color: yellow;
+}
+

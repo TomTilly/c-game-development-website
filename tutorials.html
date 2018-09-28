@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 
+
+	To Do
+	
+	- Logo?
+	- Favicon
+
+	-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>C Game Dev | Making Games with the C Programming Language</title>
+	<meta name="author" content="Tom Tillistrand">
+	<meta name="description" content="A full course on making games with the C programming language.">
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:400,700|Audiowide|Roboto:400,700|Source+Sans+Pro|Source+Code+Pro" rel="stylesheet">
+	<link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="logo-container"><a href="index.html">C Game Development</a></div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li class="current-page">Tutorials</li>
+					<li><a href="#">About</a></li>
+				</ul>
+			</nav>
+			<a class="github-link" href="#"><svg aria-labelledby="simpleicons-github-icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title id="simpleicons-github-icon">GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+		</header>
+		<div class="main-content-wrapper">
+			<main>
+				<h1> C Programming Language Basics </h1>
+				<h2> 2. Functions </h2>
+				<p>A function is a block of code that performs a task.</p>
+				<p>Here's the definition of a function called "ProcessGame":</p>
+				<div class="codediv">
+					<pre><code>ProcessGame()
+{
+    UpdatePlayer();
+    MoveEnemies();
+    CheckForCollisions();
+}</code></pre>
+		</div>
+
+<p> The function's name is as the top, and is always followed by a pair of parentheses. The lines between each brace are the body of the function. These lines get executed whenever you use <code>ProcessGame</code>. To use <code>MyFunction</code>, you write its name followed by a pair of parantheses. This is called "calling the function":
+
+<div class="codediv">
+	<code>ProcessGame();</code>
+</div>
+
+<p> At this point in the code, the contents of <code>ProcessGame</code> will be executed, that is, <code>UpdatePlayer</code> (another function) is called, then <code>MoveEnemies</code>, then <code>CheckForCollisions</code>.
+
+		<hr>
+		<h3> 2.1 Passing Data to a Function </h3>
+		
+		<p>Sometimes you will need to send a function some data. You put the value or values you want to pass into the function in the parentheses. E.g.:</p>
+		
+		<div class="codediv">
+			<code>IncreaseScoreBy(10);</code>
+		</div>
+		
+		<p> The definition of <code>IncreaseScoreBy</code> might look like this:
+
+<div class="codediv">
+	<pre><code>void IncreaseScoreBy(int amount)
+{
+    score += amount;
+    UpdateScoreText();
+    CheckIfWon();
+}</code></pre>
+</div>
+
+<p> Inside the parentheses you see what looks like a variable declaration. As part of the function definition, this tells the program that <code>IncreaseScoreBy</code> takes an integer value. This value is called a <dfn>parameter</dfn>. You can see that the value passed in above (10) is used in the function as the variable <code>amount</code>, and is added to the player's score. After this, two other functions are called that perform other actions.</p>
+
+<hr>
+<h3> 2.2 A Function's Return Value </h3>
+
+<p> Just like a variable, a function can have a value. This is its <dfn>return value</dfn> The following is an example of a function that has a value of '5': </p>
+
+<div class="codediv">
+	<pre><code>int Five()
+{
+    return 5;
+}</code></pre>
+</div>
+
+<p>The <code>int</code> before the function name tells the program this function returns an integer. Note that this example is just for instructive purposes! You would never actually need to create or use a function like this, since you can just use the number '5', as is! So let's look at a real example!</p>
+
+	<p> <code></code></p>
+<div class="codediv">
+	<pre><code>// Returns the number of points received at end of level
+int EndLevelPoints()
+{
+    int points;
+
+    points = 0;
+    points += numgems * 30;
+    points += timeleft / 2;
+    points -= enemieleft * 3;
+
+    return points;
+}</code></pre>
+</div>
+
+<p> The '//' begins a <dfn>comment</dfn>. Everything on this line afterward is ignored by the program. This is used to add descriptions to your code. In this case, it's used to clarify what this function does. </p>
+
+<p> At the beginning of the function, a variable <code>points</code> is declared, and then <dfn>initialized</dfn> (i.e., assigned a value for the first time) to 0. After this is added various amounts depending on what occurred during the level. Finally, the total points is returned. Let's look how this might be used.</p>
+
+<div class="codediv">
+	<pre><code>int endpts;
+
+endpoints = EndLevelPoints();
+printf("You scored %i points this level!\n", endpoints);
+score += endpoints;
+printf("Your total score is: %i\n", score);
+</code></pre>
+</div>
+
+			</main>
+			<aside>
+				<ul>
+					<li>Getting Started</li>
+					<ul>
+						<li>Sub Item</li>
+						<li>Sub Item</li>
+						<li>Sub Item</li>
+						<li>Sub Item</li>
+						<li>Sub Item</li>
+					</ul>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+					<li>Main Item</li>
+				</ul>
+			</aside>
+		</div>
+		<footer>
+			&copy; 2018 Tom Tillistrand
+		</footer>
+	</div>
+
+<script
+  		src="https://code.jquery.com/jquery-3.3.1.min.js"
+  		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  		crossorigin="anonymous">
+  	</script>
+  	<script src="js/javascript.js" type="text/javascript"></script>
+</body>
+</html>

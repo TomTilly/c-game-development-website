@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> C Tutorial 2 </title>
+		<link href="sh.css" type="text/css" rel="stylesheet">
+			</head>
+	
+	<body>
+		<h1> C Programming Language Basics </h1>
+		
+		<h2> 2. Functions </h2>
+
+		<p>A function is a block of code that performs a task.</p>
+		
+		<p>Here's the definition of a function called "ProcessGame":</p>
+		
+		<div class="codediv">
+			<pre><code>ProcessGame()
+{
+    UpdatePlayer();
+    MoveEnemies();
+    CheckForCollisions();
+}</code></pre>
+		</div>
+
+<p> The function's name is as the top, and is always followed by a pair of parentheses. The lines between each brace are the body of the function. These lines get executed whenever you use <code>ProcessGame</code>. To use <code>MyFunction</code>, you write its name followed by a pair of parantheses. This is called "calling the function":
+
+<div class="codediv">
+	<code>ProcessGame();</code>
+</div>
+
+<p> At this point in the code, the contents of <code>ProcessGame</code> will be executed, that is, <code>UpdatePlayer</code> (another function) is called, then <code>MoveEnemies</code>, then <code>CheckForCollisions</code>.
+
+		<hr>
+		<h3> 2.1 Passing Data to a Function </h3>
+		
+		<p>Sometimes you will need to send a function some data. You put the value or values you want to pass into the function in the parentheses. E.g.:</p>
+		
+		<div class="codediv">
+			<code>IncreaseScoreBy(10);</code>
+		</div>
+		
+		<p> The definition of <code>IncreaseScoreBy</code> might look like this:
+
+<div class="codediv">
+	<pre><code>void IncreaseScoreBy(int amount)
+{
+    score += amount;
+    UpdateScoreText();
+    CheckIfWon();
+}</code></pre>
+</div>
+
+<p> Inside the parentheses you see what looks like a variable declaration. As part of the function definition, this tells the program that <code>IncreaseScoreBy</code> takes an integer value. This value is called a <dfn>parameter</dfn>. You can see that the value passed in above (10) is used in the function as the variable <code>amount</code>, and is added to the player's score. After this, two other functions are called that perform other actions.</p>
+
+<hr>
+<h3> 2.2 A Function's Return Value </h3>
+
+<p> Just like a variable, a function can have a value. This is its <dfn>return value</dfn> The following is an example of a function that has a value of '5': </p>
+
+<div class="codediv">
+	<pre><code>int Five()
+{
+    return 5;
+}</code></pre>
+</div>
+
+<p>The <code>int</code> before the function name tells the program this function returns an integer. Note that this example is just for instructive purposes! You would never actually need to create or use a function like this, since you can just use the number '5', as is! So let's look at a real example!</p>
+
+	<p> <code></code></p>
+<div class="codediv">
+	<pre><code>// Returns the number of points received at end of level
+int EndLevelPoints()
+{
+    int points;
+
+    points = 0;
+    points += numgems * 30;
+    points += timeleft / 2;
+    points -= enemieleft * 3;
+
+    return points;
+}</code></pre>
+</div>
+
+<p> The '//' begins a <dfn>comment</dfn>. Everything on this line afterward is ignored by the program. This is used to add descriptions to your code. In this case, it's used to clarify what this function does. </p>
+
+<p> At the beginning of the function, a variable <code>points</code> is declared, and then <dfn>initialized</dfn> (i.e., assigned a value for the first time) to 0. After this is added various amounts depending on what occurred during the level. Finally, the total points is returned. Let's look how this might be used.</p>
+
+<div class="codediv">
+	<pre><code>int endpts;
+
+endpoints = EndLevelPoints();
+printf("You scored %i points this level!\n", endpoints);
+score += endpoints;
+printf("Your total score is: %i\n", score);
+</code></pre>
+</div>
+
+<p><a href="tut3.html">Next ></a></p>
+
+	</body>
+</html>

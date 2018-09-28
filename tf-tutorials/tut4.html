@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> C with SDL Tutorial 4 </title>
+		<link href="sh.css" type="text/css" rel="stylesheet">
+			</head>
+	
+	<body>
+		<h1> Making Pong </h1>
+		
+		<h2> 1. Starting SDL </h2>
+		
+		<p> Create a text file called "pong.c" and open it. The on the first line type:</p>
+
+		<div class="codediv">
+			<code><span class="newcode">#include &lt;SDL2/SDL.h&gt;</span></code>
+		</div>
+
+<p>This line tells the compiler to include the SDL2 library. After this, write the <code>main</code> function. We'll add content in a moment. Your program should look like this:</p>
+		
+		<div class="codediv">
+			<pre><code>#include &lt;SDL2/SDL.h&gt;
+				
+<span class="newcode">int main()</span>
+<span class="newcode">{</span>
+    <span class="newcode">return 0;</span>
+<span class="newcode">}</span></code></pre>
+		</div>
+		
+		<p> At the beginning of <code>main</code>, make a call to the SDL library function <code>SDL_Init</code>. This function takes one parameter. The parameter you give it tells the program what you want to start up. In this case, we only need video (i.e. visual).</p>
+		
+		<div class="codediv">
+			<pre><code>...
+int main()
+{
+    <span class="newcode">SDL_Init(SDL_VIDEO);</span>
+    return 0;
+}</code></pre>
+		</div>
+		
+
+<p> Next we need to make a window. We'll need a variable in which to store it. What data type is it though? Surely not an integer. It's a custom type called <code>SDL_Window</code> that's part of the SDL library. More on custom types later. It's nice to declare the variables at the top of the function, to keep them all in once place. Let's call this variable "window".</p>
+
+
+<div class="codediv">
+	<pre><code>...
+int main()
+{
+    <span class="newcode">SDL_Window *window;</span>
+	
+    SDL_Init(SDL_VIDEO);
+    return 0;
+}</code></pre>
+</div>
+
+<p>Don't worry about the '<code>*</code>' yet, just know that it's needed between the variable's type (<code>SDL_Window</code>) and name (<code>window</code>). How does one assign a variable of type <code>SDL_Window</code> a value? The SDL library has a function for that:</p>
+
+<div class="codediv">
+	<pre><code>...
+int main()
+{
+    SDL_Window *window;
+
+    SDL_Init(SDL_VIDEO);
+    <span class="newcode">window = SDL_CreateWindow("Pong", 0, 0, 640, 480, SDL_WINDOW_SHOWN)</span>;
+
+    return 0;
+}</code></pre>
+</div>
+
+<p> This one takes some explaining, but it's not as complicated as it looks. If we check the SDL documentation for the function <code>SDL_CreateWindow</code> (<a href="https://wiki.libsdl.org/SDL_CreateWindow" target="_blank">wiki.libsdl.org/SDL_CreateWindow</a>), we see that it takes not one, but 6 values. Their purpose, from left to right is: the window's title, x position, y position, width, height, and flags. Think of flags as properties---a value that tells it what it should be like. In this case we just need it to appear, so we use the flag '<code>SDL_WINDOW_SHOWN</code>'.</p>
+
+<p>Now we need a way to make something appear on screen. We'll use something called a <dfn>renderer</dfn>. We make it in a very similar way as the window: create a variable of type <code>SDL_Renderer</code> and initialize it with the function <code>SDL_CreateRenderer</code>.</p>
+
+<div class="codediv">
+	<pre><code>...
+int main()
+{
+    SDL_Window   *window;
+    <span class="newcode">SDL_Renderer *renderer;</span>
+
+    SDL_Init(SDL_VIDEO);
+    window = SDL_CreateWindow("Pong", 0, 0, 640, 480, SDL_WINDOW_SHOWN);
+    <span class="newcode">renderer = SDL_CreateRenderer(window, -1, 0);</span>
+
+    return 0;
+}</code></pre>
+	</div>
+
+<p>You can look at the documentation for <code>SDL_CreateRenderer</code> if you like. Don't worry if you don't understand it all right now.</p>
+
+<p> Were we to run the program now, no window would actually appear. We created the window with <code>SDL_CreateWindow</code>, but the very next line (<code>return 0;</code>) terminates the program before there's time to actually see it. Let's add a 2 second delay so we can. We'll use <code>SDL_Delay</code>, which takes one value in milliseconds. We also need to destory the window and renderer when finishes, as well as shut down SDL.</p>
+
+<div class="codediv">
+	<pre><code>...
+int main()
+{
+    SDL_Window *window;
+    SDL_Renderer *renderer;
+
+    SDL_Init(SDL_VIDEO);
+    window = SDL_CreateWindow("Pong", 0, 0, 640, 480, SDL_WINDOW_SHOWN);
+    renderer = SDL_CreateRenderer(window, -1, 0);
+
+    <span class="newcode">SDL_Delay(2000);
+
+    SDL_Destory(window);
+    SDL_Destrory(renderer);
+    SDL_Quit();</span>
+    return 0;
+}</code></pre>
+</div>
+
+
+ 
+		<p><a href="tut5.html">Next ></a></p>
+	</body>
+</html>
+
+
